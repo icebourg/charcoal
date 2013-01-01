@@ -6,13 +6,15 @@
   %body
     %section
       %h1= data.delete('Title')
-      - data.each do |k, v|
-        %div.links
-          %strong
-            %a{:href => "\##{k.slugify}"}><
-              = k
-          \:&nbsp;
-          - v.each do |kk, vv|
-            %a{:href => "\##{k.slugify}_#{kk.slugify}"}<
-              = kk
+      %ul
+        - renderURL = data.delete('RenderURL')
+        - data.each do |k, v|
+          %li.links
+            %strong
+              %a{:href => "/#{k.slugify}"}><
+                = k
             &nbsp;
+            - v.each do |kk, vv|
+              %a{:href => "/#{k.slugify}\##{kk.slugify}"}<
+                = kk
+              &nbsp;
