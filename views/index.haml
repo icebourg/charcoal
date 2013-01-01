@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %link{:rel => "stylesheet", :type => "text/css", :href => "css/style.css"}
+    %title= data['Title']
+  %body
+    %section
+      %h1= data.delete('Title')
+      - data.each do |k, v|
+        %div.links
+          %strong
+            %a{:href => "\##{k.slugify}"}><
+              = k
+          \:&nbsp;
+          - v.each do |kk, vv|
+            %a{:href => "\##{k.slugify}_#{kk.slugify}"}<
+              = kk
+            &nbsp;
